@@ -13,3 +13,4 @@ RUN apt-get install -y graphviz-dev graphviz pkg-config
 
 USER jovyan
 RUN pip install nxpd pydot2 pygraphviz
+RUN /bin/bash -c "source activate /opt/conda/envs/python2/ && pip install nxpd pydot2 pygraphviz"
