@@ -14,3 +14,9 @@ RUN apt-get install -y graphviz-dev graphviz pkg-config
 USER jovyan
 RUN pip install nxpd pydot2 pygraphviz
 RUN /bin/bash -c "source activate /opt/conda/envs/python2/ && pip install nxpd pydot2 pygraphviz"
+
+USER root
+RUN apt-get install -y libgdal-dev
+USER jovyan
+RUN CPLUS_INCLUDE_PATH=/usr/include/gdal C_INCLUDE_PATH=/usr/include/gdal pip install GDAL==1.10
+RUN pip install georasters
