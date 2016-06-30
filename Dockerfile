@@ -9,6 +9,7 @@ RUN pip install skflow
 RUN /bin/bash -c "source activate /opt/conda/envs/python2/ && pip install skflow"
 
 USER root
+RUN apt-get update && apt-get install -y pkg-config
 RUN apt-get install -y graphviz-dev graphviz pkg-config
 
 USER jovyan
@@ -20,3 +21,6 @@ RUN apt-get install -y libgdal-dev
 USER jovyan
 RUN CPLUS_INCLUDE_PATH=/usr/include/gdal C_INCLUDE_PATH=/usr/include/gdal pip install GDAL==1.10
 RUN pip install georasters
+
+USER jovyan
+RUN pip install keras h5py
