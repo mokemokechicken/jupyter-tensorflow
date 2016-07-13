@@ -1,3 +1,7 @@
 #!/bin/sh
 
-docker build -t mokemokechicken/jupyter-tensorflow:1.1 .
+TAG=1.1.2
+
+docker build -t mokemokechicken/jupyter-tensorflow:latest .
+docker tag mokemokechicken/jupyter-tensorflow:latest mokemokechicken/jupyter-tensorflow:${TAG}
+

@@ -24,3 +24,15 @@ RUN pip install georasters
 
 USER jovyan
 RUN pip install keras h5py
+
+ADD resources/IPAfont00303/ /usr/share/fonts/truetype/IPAFont/
+
+RUN pip install dateparser
+
+WORKDIR "$HOME"
+RUN curl -L -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-116.0.0-linux-x86_64.tar.gz
+RUN tar xzf google-cloud-sdk-116.0.0-linux-x86_64.tar.gz
+ENV CLOUDSDK_PYTHON=/usr/bin/python2
+RUN ./google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=${HOME}/.bashrc
+
+WORKDIR /home/jovyan/work
